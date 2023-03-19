@@ -1,0 +1,13 @@
+/*
+package Airports;
+
+public final class InputDataChecker {
+    public static int getColumn(String[] args) {
+        try {
+            return Integer.parseInt(args[1]);
+        } catch (NumberFormatException e) {
+            throw e;
+        }
+    }
+}
+*/
