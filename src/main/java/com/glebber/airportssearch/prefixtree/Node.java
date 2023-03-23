@@ -1,7 +1,6 @@
-package PrefixTree;
+package com.glebber.airportssearch.prefixtree;
 
 
-import java.util.Collection;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -18,24 +17,25 @@ class Node {
 
     private boolean isEndOfString = false;
 
-    Node(char key, String string) {
+    Node(char key, String string, long bytesCount) {
         this.key = Character.toLowerCase(key);
         children = new HashMap<>();
-        bytesCount = -1;
+        this.bytesCount = -1;
         if (string.isEmpty()) {
             isEndOfString = true;
+            this.bytesCount = bytesCount;
         } else {
-            add(string, -1);
+            add(string, bytesCount);
         }
     }
 
-    Node(char key, String string, long bytesCount) {
-        this(key, string);
-        this.bytesCount = bytesCount;
-    }
+//    Node(char key, String string, long bytesCount) {
+//        this(key, string);
+//        this.bytesCount = bytesCount;
+//    }
 
     static Node rootNode() {
-        return new Node(EMPTY_KEY, "");
+        return new Node(EMPTY_KEY, "", 0);
     }
 
     boolean add(String string, long bytesCount) {
@@ -52,8 +52,8 @@ class Node {
         if (children.containsKey(nextKey)) {
             return children.get(nextKey).add(string.substring(1), bytesCount);
         }
+        children.put(nextKey, new Node(nextKey, string.substring(1), bytesCount));
 
-        children.put(nextKey, new Node(nextKey, string.substring(1)));
         return true;
     }
 

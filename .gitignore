@@ -1,4 +1,4 @@
-/airports.csv
+/src/main/resources/airports.csv
 /out
 /.idea
 /airports-search.iml

@@ -1,4 +1,4 @@
-package airports;
+package com.glebber.airportssearch.airports;
 
 import java.util.Scanner;
 
@@ -8,10 +8,10 @@ public class CommandLineMaintainer {
         System.out.println("Введите строку:");
         Scanner console = new Scanner(System.in);
         String inputData = console.nextLine();
-        if (inputData == "!quit") {
+        if ("!quit".equals(inputData)) {
             System.exit(0);
         }
-        return inputData;
+        return inputData.toLowerCase();
     }
 
     public void outputInformation(long time, int countMatches) {

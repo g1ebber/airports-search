@@ -1,8 +1,8 @@
-package airports;
+package com.glebber.airportssearch.airports;
 
 import java.io.File;
 
-class FileHandler {
+public class FileHandler {
     private String fileName;
     private String filePath;
     private File file;
