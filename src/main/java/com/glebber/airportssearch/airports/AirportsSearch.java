@@ -25,12 +25,12 @@ public class AirportsSearch {
         BufferedReader csvReader = new BufferedReader(new FileReader(file));
         String row;
         Long bytesCount = (long) 0;
+        column--;
 
         while ((row = csvReader.readLine()) != null) {
             String[] data = row.split(",");
 
             data[column] = data[column].replaceAll("\"", "").toLowerCase();
-
 
             valuesTree.add(data[column], bytesCount);
             row += "\n";
