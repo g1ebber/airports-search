@@ -7,10 +7,10 @@ public class FileHandler {
     private String filePath;
     private File file;
 
-    public FileHandler(String fileName) {
-        this.fileName = fileName;
-        this.file = new File(fileName);
-        this.filePath = file.getAbsolutePath();
+    public FileHandler(File file) {
+        this.file = file;
+        this.filePath = file.getPath();
+        this.fileName = file.getName();
     }
 
     public File getFile() {

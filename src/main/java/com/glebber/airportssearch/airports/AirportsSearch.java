@@ -34,12 +34,15 @@ public class AirportsSearch {
 
             valuesTree.add(data[column], bytesCount);
             row += "\n";
-            bytesCount += row.getBytes(StandardCharsets.UTF_8).length;
+            bytesCount += row.getBytes("Cp1251").length;
         }
         csvReader.close();
     }
 
     public void search(String subString) throws IOException {
+        matches = 0;
+        usedTime = 0;
+
         Instant start = Instant.now();
 
         Map<Long,String> resultMap = valuesTree.findAll(subString);
@@ -50,6 +53,8 @@ public class AirportsSearch {
         RandomAccessFile randomAccessFile = new RandomAccessFile(file, "r");
 
         for (long bytesCount:resultMap.keySet()) {
+//            PrintWriter consoleOut = new PrintWriter(new OutputStreamWriter(System.out, "UTF-8"));
+//            consoleOut.println(value + "[" + row + "]");
             String value = resultMap.get(bytesCount);
             randomAccessFile.seek(bytesCount);
             String row = randomAccessFile.readLine().replaceAll("\"\"", "\"");
